@@ -187,3 +187,115 @@ END
 • AND Operation: 25H & 12H = 00H → Stored in 46H
 
 • OR Operation: 25H | 12H = 37H → Stored in 47H
+
+
+
+# Basic Embedded C Program using Keil Simulator
+
+## Date:
+*(Enter the date of the experiment)*
+
+## Aim:
+To write and execute a basic Embedded C program to control **Port 0, Pin 0** of an 8051 microcontroller using the Keil µVision5 simulator.
+
+## Software Required
+
+| S.No | Software Requirement     | Quantity |
+|------|---------------------------|----------|
+| 1    | Keil µVision5 IDE         | 1        |
+
+## Procedure
+
+1. **Create a New Project**:
+   - Open Keil µVision5.
+   - Go to `Project` > `Close Project` to close any existing project.
+   - Then navigate to `Project` > `New µVision Project` to create a new one.
+
+2. **Select the Target Device**:
+   - Choose the appropriate microcontroller (e.g., **AT89C51ED2**, **AT89C51**, or **AT89C52**) from the device list.
+
+3. **Add the Startup File** *(if needed)*:
+   - If prompted, add the startup file provided by Keil for 8051 devices.
+
+4. **Create a New Source File**:
+   - Go to `File` > `New`.
+   - Write the Embedded C program in the editor window.
+   - Save the file with a `.c` extension (e.g., `main.c`).
+
+5. **Add the Source File to the Project**:
+   - Right-click on `Source Group 1` > `Add Existing Files to Group 'Source Group 1'`.
+   - Select the `.c` file you created and click `Add`.
+
+6. **Build the Project**:
+   - Click on `Project` > `Build Target` or press `F7` to compile the program.
+   - Resolve any compilation errors.
+
+7. **Start Debugging**:
+   - Click on the "Start/Stop Debug Session" icon.
+   - Use the `Run` or `Step` buttons to simulate the program.
+   - Observe the output by monitoring Port 0 in the I/O peripheral window.
+
+## Code (Embedded C)
+
+```c
+1. Embedded C Addition
+
+#include <reg51.h>
+void main(void)
+{ 
+unsigned char X,Y,Z;
+X =0x12;
+Y =0x34;
+P0 =0x00;
+Z =X+Y;
+P0 = Z;
+}
+
+Expected Output: 12H + 34H = 46H
+
+2.Embedded C Subtraction
+
+#include <reg51.h>
+void main(void)
+{ 
+unsigned char X,Y,Z;
+X =0x12;
+Y =0x34;
+P0 =0x00;
+Z =X-Y;
+P0 = Z;
+}
+
+Output: 34H - 12H = 22H
+
+3.Embedded C Multiplication
+
+#include <reg51.h>
+void main(void)
+{ 
+unsigned char X,Y,Z;
+X =0x12;
+Y =0x34;
+P0 =0x00;
+Z =XxY;
+P0 = Z;
+}
+
+Output: 12H × 02H = 24H
+
+4.Embedded C Division
+
+#include <reg51.h>
+void main(void)
+{ 
+unsigned char X,Y,Z;
+X =0x12;
+Y =0x34;
+P0 =0x00;
+Z =X/Y;
+P0 = Z;
+while (1); 
+}
+Output: 24H ÷ 12H = 02H
+
+```
