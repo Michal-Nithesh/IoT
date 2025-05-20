@@ -86,3 +86,104 @@ END
 ## OUTPUT
 
 The contents of memory from 30H to 34H are copied to 40H to 44H.
+
+
+# 8051 ALU Program using Keil Simulator
+
+## Aim
+To write and execute an ALU (Arithmetic Logic Unit) program using the Keil µVision simulator.
+
+## Software Tools Required
+
+| S.No | Software Requirements   | Quantity |
+|------|--------------------------|----------|
+| 1    | Keil µVision5 IDE        | 1        |
+
+## Procedure
+
+1. **Create a new project**:
+   - Go to `Project` > `Close Project` to close any existing project.
+   - Then select `Project` > `New µVision Project` to create a new project.
+   - Choose a target device such as **AT89C51ED2**, **AT89C51**, or **AT89C52**.
+
+2. **Add the startup file** (if required by your device or configuration).
+
+3. **Create a new source file**:
+   - Go to `File` > `New`.
+   - Write your ALU program in the editor.
+   - Save the file with a `.asm` extension.
+
+4. **Add the source file to the project**:
+   - Right-click on `Source Group 1` > `Add Existing Files to Group`.
+   - Select your `.asm` file.
+
+5. **Build the project**:
+   - Click on `Build Target` or press `F7` to compile the program.
+   - Fix any errors if necessary.
+
+6. **Enter debugging mode**:
+   - Click the "Start/Stop Debug Session" icon.
+   - Use `Run` or `Step Run` to execute the program and observe the result.
+
+> **Note**: Use the Register and Memory windows to view the results of ALU operations such as addition, subtraction, logical AND, OR, etc.
+
+``` asm
+PROGRAM:
+
+// ARTHAMETIC AND LOGICAL OPERATION
+// ADDITION
+MOV A,#25H
+MOV B,#12H
+ADD A,B
+MOV 40H,A
+
+// SUBTRACTION
+MOV A,#25H
+SUBB A,B
+MOV 41H,A
+
+// MULTIPLICATION
+MOV A,#25H
+MUL AB
+MOV 42H,A
+MOV 43H,B
+
+// DIVISION
+MOV A,#25H
+MOV B,#12H
+DIV AB
+MOV 44H,A
+MOV 45H,B
+
+//AND OPERATION
+
+MOV A,#25H
+MOV B,#12H
+ANL A,B
+MOV 46,A
+
+// OR OPERATION
+
+MOV A,#25H
+MOV B,#12H
+ORL A,B
+MOV 47,A
+LCALL 0003H
+END
+```
+
+## OUTPUT:
+
+• Addition: 25H + 12H = 37H → Stored in 40H
+
+• Subtraction: 25H - 12H = 13H → Stored in 41H
+
+• Multiplication: 25H × 12H = 0288H → Stored in 42H, 43H
+
+• Division: 25H ÷ 12H = 02H (quotient) & 01H (remainder) → Stored in 44H, 
+
+45H
+
+• AND Operation: 25H & 12H = 00H → Stored in 46H
+
+• OR Operation: 25H | 12H = 37H → Stored in 47H
