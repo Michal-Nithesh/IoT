@@ -24,7 +24,7 @@ To write and execute an 8051 assembly language program using the Keil µVision s
 8. **Verify output**:
    - Use peripherals and register windows to verify output.
 
-## Code
+## Code - 1
 ```asm
 ORG 00H
 SJMP START
@@ -40,3 +40,49 @@ END
 ## OUTPUT:
 
 The sum of 03H + 03H is stored in R1 (06H).
+
+
+# 8051 Assembly Language Program using Keil Simulator
+
+## Aim
+To test data transfer between registers and memory in 8051 microcontroller using Keil µVision.
+
+## Procedure
+
+1. **Open Keil µVision IDE**.
+2. **Create a new project**:
+   - Navigate to `Project` > `New uVision Project`.
+   - Name the project and save it in a desired directory.
+3. **Select the target device**:
+   - Choose `AT89C51` or any compatible 8051 microcontroller.
+4. **Add a new Assembly file**:
+   - Right-click on `Source Group 1` > `Add New Item to Group 'Source Group 1'`.
+   - Choose `Assembly File (.A51)`, name the file, and click Add.
+5. **Write the program code** in the editor window.
+6. **Build the project**:
+   - Go to `Project` > `Build Target` or press `F7`.
+   - Ensure there are no syntax errors.
+7. **Start debugging**:
+   - Click the "Start/Stop Debug Session" button.
+   - Use memory window and watch registers to monitor data transfer.
+8. **Initialize memory**:
+   - Before running, manually load values into memory from `30H` to `34H`.
+9. **Run the program** and observe results.
+
+## Code
+```asm
+ORG 00H
+MOV R0,#30H
+MOV R1,#40H
+MOV R3,#05
+MOV A,@R0
+UP: MOV @R1,A
+INC R0
+INC R1
+DJNZ R1,UP
+END
+```
+
+## OUTPUT
+
+The contents of memory from 30H to 34H are copied to 40H to 44H.
